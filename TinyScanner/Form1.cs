@@ -12,7 +12,7 @@ namespace TinyScanner
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // ????? ?????
+
         }
 
         private void btnScan_Click(object sender, EventArgs e)
@@ -27,6 +27,16 @@ namespace TinyScanner
             foreach (var t in tokens)
             {
                 lstTokens.Items.Add(t.ToString());
+            }
+
+            try
+            {
+                Parser parser = new Parser(tokens);
+                parser.Parse();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }
